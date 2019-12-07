@@ -1,5 +1,9 @@
 package com.airbus.hackathon.configuration;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,9 +13,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.beans.PropertyVetoException;
+import java.util.List;
 
 @Configuration
 @Component
@@ -27,6 +39,18 @@ public class AppConfiguration {
 
     @Value("${spring.datasource.password}")
     private String datasourcePassword;
+
+    @Value("${c3p0.initialPoolSize}")
+    private String initialPoolSize;
+
+    @Value("${c3p0.maxPoolSize}")
+    private String maxPoolSize;
+
+    @Value("${c3p0.minPoolSize}")
+    private String minPoolSize;
+
+    @Value("${c3p0.maxIdleTime}")
+    private String maxIdleTime;
 
     @Value("${httpClient.connection.pool.size:200}")
     private String poolMaxTotal;
@@ -97,27 +121,6 @@ public class AppConfiguration {
         messageConverters.add(new FormHttpMessageConverter());
         template.setMessageConverters(messageConverters);
         return template;
-    }
-
-    @Override
-    public Executor getAsyncExecutor() {
-        int availProcessorCount = Runtime.getRuntime().availableProcessors();
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(availProcessorCount);
-        executor.setMaxPoolSize(2 * availProcessorCount);
-        executor.setKeepAliveSeconds(Integer.parseInt(keepAliveSeconds));
-        executor.setAwaitTerminationSeconds(Integer.parseInt(awaitTerminationSeconds));
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        executor.setWaitForTasksToCompleteOnShutdown(true);
-        executor.setQueueCapacity(availProcessorCount);
-        executor.setThreadNamePrefix("prepaid-thread-");
-        executor.initialize();
-        return executor;
-    }
-
-    @Override
-    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return new CustomAsyncExceptionHandler();
     }
 
 }
