@@ -9,7 +9,8 @@ target/
 .settings
 .springBeans
 bin/
-
+*.iml
+hackathon.iml
 ### IntelliJ IDEA ###
 .idea
 *.iws
