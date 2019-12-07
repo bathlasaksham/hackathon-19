@@ -1,7 +1,7 @@
-package com.oyo.restrictions.cache;
+package com.airbus.hackathon.cache;
 
-import com.oyo.restrictions.cache.jedis.JedisCache;
-import com.oyo.restrictions.util.MathUtil;
+import com.airbus.hackathon.cache.jedis.JedisCache;
+import com.airbus.hackathon.util.MathUtil;
 
 public class CacheFactory {
 

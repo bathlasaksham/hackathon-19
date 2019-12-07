@@ -1,16 +1,14 @@
-package com.oyo.restrictions.cache.jedis;
+package com.airbus.hackathon.cache.jedis;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.airbus.hackathon.cache.Cache;
+import com.airbus.hackathon.util.TransformUtil;
 import org.apache.commons.lang3.StringUtils;
-
-import com.oyo.restrictions.cache.Cache;
-import com.oyo.restrictions.util.TransformUtil;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JedisCache implements Cache {
 
