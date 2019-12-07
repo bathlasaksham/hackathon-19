@@ -1,6 +1,7 @@
 package com.airbus.hackathon.util;
 
-import com.oyo.overbooking.constant.Constants;
+
+import com.airbus.hackathon.constant.Constants;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
