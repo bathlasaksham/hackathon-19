@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {"com.airbus.hackathon"})
-@EntityScan(basePackages = {"com.oyo.hackathon"})
+@EntityScan(basePackages = {"com.airbus.hackathon"})
 @EnableScheduling
 public class HackathonApplication {
 
