@@ -1,0 +1,9 @@
+databaseChangeLog:
+# includeAll is broken currently
+#- includeAll:
+#    path: migration/
+#    errorIfMissingOrEmpty: true
+#    relativeToChangelogFile: true
+- include:
+    file: migration/201903271500_create_hotels.yml
+    relativeToChangelogFile: true
