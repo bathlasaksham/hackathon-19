@@ -30,6 +30,12 @@ public class Baggage extends AbstractEntity<Integer> implements Serializable {
         public String getName() {
             return name;
         }
+
+        public static final Baggage.Status BAGGAGE_STATUS_ARRAY[];
+
+        static {
+            BAGGAGE_STATUS_ARRAY = Baggage.Status.values();
+        }
     }
 
     public Baggage() {
