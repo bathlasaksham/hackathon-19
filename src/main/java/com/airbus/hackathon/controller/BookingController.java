@@ -1,6 +1,5 @@
 package com.airbus.hackathon.controller;
 
-import com.airbus.hackathon.exception.BadRequestException;
 import com.airbus.hackathon.pojo.request.CreateBookingRequest;
 import com.airbus.hackathon.pojo.response.CreateBookingResponse;
 import com.airbus.hackathon.service.BookingService;
