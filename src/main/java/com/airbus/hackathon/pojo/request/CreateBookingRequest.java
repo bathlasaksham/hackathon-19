@@ -31,12 +31,12 @@ public class CreateBookingRequest implements Serializable {
     private String name;
 
     @JsonProperty("no_of_people")
-    private String noOfPeople;
+    private Integer noOfPeople;
 
     public CreateBookingRequest() {
     }
 
-    public CreateBookingRequest(List<String> flightIds, String date, String emailId, String phoneNo, String name, String noOfPeople) {
+    public CreateBookingRequest(List<String> flightIds, String date, String emailId, String phoneNo, String name, Integer noOfPeople) {
         this.flightIds = flightIds;
         this.date = date;
         this.emailId = emailId;
@@ -85,11 +85,11 @@ public class CreateBookingRequest implements Serializable {
         this.name = name;
     }
 
-    public String getNoOfPeople() {
+    public Integer getNoOfPeople() {
         return noOfPeople;
     }
 
-    public void setNoOfPeople(String noOfPeople) {
+    public void setNoOfPeople(Integer noOfPeople) {
         this.noOfPeople = noOfPeople;
     }
 
@@ -103,10 +103,6 @@ public class CreateBookingRequest implements Serializable {
                 ", name='" + name + '\'' +
                 ", noOfPeople='" + noOfPeople + '\'' +
                 '}';
-    }
-
-    public boolean isValid() {
-        return !StringUtils.isEmpty(emailId) && !StringUtils.isEmpty(phoneNo) && !StringUtils.isEmpty(name) && !CollectionUtils.isEmpty(flightIds) && !StringUtils.isEmpty(noOfPeople) && !StringUtils.isEmpty(date);
     }
 
 }
