@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookingManager extends AbstractManager<Booking, Integer> {
+public class BookingManager extends AbstractManager {
 
     @Autowired
     private BookingRepository bookingRepository;
