@@ -3,6 +3,8 @@ package com.airbus.hackathon.pojo.request;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -101,6 +103,10 @@ public class CreateBookingRequest implements Serializable {
                 ", name='" + name + '\'' +
                 ", noOfPeople='" + noOfPeople + '\'' +
                 '}';
+    }
+
+    public boolean isValid() {
+        return !StringUtils.isEmpty(emailId) && !StringUtils.isEmpty(phoneNo) && !StringUtils.isEmpty(name) && !CollectionUtils.isEmpty(flightIds) && !StringUtils.isEmpty(noOfPeople) && !StringUtils.isEmpty(date);
     }
 
 }

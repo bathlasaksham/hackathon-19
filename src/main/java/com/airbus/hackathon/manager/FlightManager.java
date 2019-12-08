@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FlightManager extends AbstractManager {
+public class FlightManager extends AbstractManager<Flight> {
 
     @Autowired
     private FlightRepo flightRepo;
@@ -15,5 +15,10 @@ public class FlightManager extends AbstractManager {
     @Override
     public JpaRepository<Flight, Integer> getRepo() {
         return flightRepo;
+    }
+
+
+    public Flight findByFlightName(String flightId) {
+        return flightRepo.findByFlightName(flightId);
     }
 }

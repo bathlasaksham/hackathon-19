@@ -55,5 +55,5 @@ public class Coupon extends AbstractEntity<Integer> implements Serializable {
                 ", maxDiscount=" + maxDiscount +
                 '}';
     }
-    
+
 }
