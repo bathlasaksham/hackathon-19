@@ -99,7 +99,7 @@ public class AppConfiguration {
     @Bean
     @Primary
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(primaryDataSource()).packages("com.oyo.prepaid").build();
+        return builder.dataSource(primaryDataSource()).packages("com.airbus.hackathon").build();
     }
 
     public HttpClient httpClient(int noOfConnections) {

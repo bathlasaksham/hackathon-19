@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FlightManager extends AbstractManager {
+public class FlightManager extends AbstractManager<Flight> {
 
     @Autowired
     private FlightRepo flightRepo;
