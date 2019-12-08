@@ -17,6 +17,8 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
 
     private String destination;
 
+    private String email;
+
     private Integer amount;
 
     private String phone;
@@ -123,6 +125,14 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

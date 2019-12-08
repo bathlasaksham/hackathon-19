@@ -43,10 +43,13 @@ public class BookingService {
             createBookingResponse.setErrors(errors);
             return createBookingResponse;
         }
-        Booking booking = new Booking(DateUtil.toDate(createBookingRequest.getDate()), TransformUtil.toJson(createBookingRequest.getFlightIds()), createBookingRequest.getSource(),
+        Booking booking = new Booking(DateUtil.toDate(createBookingRequest.getDate()), createBookingRequest.getFlightIds().toString(), createBookingRequest.getSource(),
                 createBookingRequest.getDestination(), createBookingRequest.getPrice(), createBookingRequest.getPhoneNo(),
                 createBookingRequest.getNoOfPeople(), Booking.Status.CONFIRM);
-        bookingManager.create(booking);
+        booking.setEmail(createBookingRequest.getEmailId());
+        if (bookingManager.create(booking) != null) {
+            createBookingResponse.setSuccess(true);
+        }
         createBookingResponse.setErrors(errors);
         return createBookingResponse;
     }

@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -116,6 +117,15 @@ public class TransformUtil {
             results = stringToNumberList(commaSeparatedNumbersString.split(","));
         }
         return results;
+    }
+
+    public static List<String> toArrayString(String commaSeparatedString) {
+        List<String> results = null;
+        String[] stringArray = null;
+        if (commaSeparatedString != null) {
+            stringArray = commaSeparatedString.split("\\,");
+        }
+        return Arrays.asList(stringArray);
     }
 
     /**

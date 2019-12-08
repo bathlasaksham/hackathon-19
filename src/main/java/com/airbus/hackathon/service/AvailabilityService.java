@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class AvailabilityService {
             Integer totalCapacity = flight.getCapacity();
             Integer bookedSeats = 0;
             for (Booking booking: bookings) {
-                List<Integer> flightIdsForBooking = TransformUtil.toArray(booking.getFlightIds());
+                List<String> flightIdsForBooking = Arrays.asList(booking.getFlightIds().split(","));
                 if (flightIdsForBooking.contains(flightId)) {
                     bookedSeats += booking.getPersons();
                 }

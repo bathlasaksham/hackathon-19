@@ -64,3 +64,8 @@ databaseChangeLog:
             type: int
             constraints:
               nullable: false
+        - column:
+            name: status
+            type: int
+            constraints:
+              nullable: false
