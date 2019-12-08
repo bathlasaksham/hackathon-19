@@ -16,7 +16,7 @@ public class LocationService {
     public List<String> getLocations() {
         return new ArrayList<String>() {
             {
-                add("Delhi");add("Mumbai");add("Hyderabad");add("Chennai");add("Bengaluru");add("Kolkata");
+                add("Delhi");add("Mumbai");add("Hyderabad");add("Chennai");add("Bengaluru");add("Kolkata");add("Guwahati");
             }
         };
         //TODO

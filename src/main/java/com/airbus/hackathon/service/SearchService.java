@@ -82,6 +82,7 @@ public class SearchService {
             List<FlightDetails> flightDetailsList = new ArrayList<>();
             flightDetailsList.add(flightDetails);
             flightsInfo.setFlightDetails(flightDetailsList);
+            flightsInfoList.add(flightsInfo);
         }
         return flightsInfoList;
     }
@@ -107,6 +108,7 @@ public class SearchService {
             flightDetailsList.add(flightDetails2);
             flightDetailsList.add(flightDetails);
             flightsInfo.setFlightDetails(flightDetailsList);
+            flightsInfoList.add(flightsInfo);
         }
         return flightsInfoList;
     }
