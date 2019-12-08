@@ -117,6 +117,14 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
         this.persons = persons;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +

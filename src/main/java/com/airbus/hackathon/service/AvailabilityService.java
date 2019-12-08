@@ -45,8 +45,7 @@ public class AvailabilityService {
                 continue;
             }
             LocalDate flightDate = DateUtil.toDate(date);
-            Set<Integer> flightOperationalDaysOfWeek = (Set<Integer>) TransformUtil.fromJson(route.getDays(), new TypeReference<Set<Integer>>() {
-            });
+            List<Integer> flightOperationalDaysOfWeek = TransformUtil.toArray(route.getDays());
             if (!flightOperationalDaysOfWeek.contains(flightDate.getDayOfWeek().getValue())) {
                 flightIdWiseAvailability.put(flightId, 0);
                 continue;
@@ -54,8 +53,7 @@ public class AvailabilityService {
             Integer totalCapacity = flight.getCapacity();
             Integer bookedSeats = 0;
             for (Booking booking: bookings) {
-                List<Integer> flightIdsForBooking = (List<Integer>) TransformUtil.fromJson(booking.getFlightIds(), new TypeReference<List<Integer>>() {
-                });
+                List<Integer> flightIdsForBooking = TransformUtil.toArray(booking.getFlightIds());
                 if (flightIdsForBooking.contains(flightId)) {
                     bookedSeats += booking.getPersons();
                 }
