@@ -23,10 +23,34 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
 
     private Integer persons;
 
+    private Booking.Status status;
+
+    public enum Status {
+
+        CONFIRM("Confirm Booking"), CHECKIN("Checked In"), CHECKOUT("Checked Out"), CANCELLED("Cancelled Booking"),
+        NO_SHOW("No Show"), SAVED("Saved");
+
+        private String name;
+
+        Status(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public static final Booking.Status BOOKING_STATUS_ARRAY[];
+
+        static {
+            BOOKING_STATUS_ARRAY = Booking.Status.values();
+        }
+    }
+
     public Booking() {
     }
 
-    public Booking(LocalDate date, String flightIds, String source, String destination, Integer amount, String phone, Integer persons) {
+    public Booking(LocalDate date, String flightIds, String source, String destination, Integer amount, String phone, Integer persons, Status status) {
         this.date = date;
         this.flightIds = flightIds;
         this.source = source;
@@ -34,6 +58,7 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
         this.amount = amount;
         this.phone = phone;
         this.persons = persons;
+        this.status = status;
     }
 
     public LocalDate getDate() {

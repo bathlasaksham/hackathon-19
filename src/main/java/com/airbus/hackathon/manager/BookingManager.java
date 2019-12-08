@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BookingManager extends AbstractManager<Booking> {
 
@@ -17,8 +19,8 @@ public class BookingManager extends AbstractManager<Booking> {
         return bookingRepository;
     }
 
-    public Integer getBookedSeatsForFlightIdAndDate(String flightId, String date) {
-        return bookingRepository.getBookedSeatsForFlightIdAndDate(flightId, date);
+    public List<Booking> getBookedSeatsForFlightIdAndDate(String date) {
+        return bookingRepository.getBookedSeatsForFlightIdAndDate(date);
     }
 
 }

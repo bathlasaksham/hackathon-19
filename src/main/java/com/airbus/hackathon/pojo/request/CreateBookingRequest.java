@@ -21,6 +21,15 @@ public class CreateBookingRequest implements Serializable {
     @JsonProperty("date")
     private String date;
 
+    @JsonProperty("source")
+    private String source;
+
+    @JsonProperty("price")
+    private Integer price;
+
+    @JsonProperty("destination")
+    private String destination;
+
     @JsonProperty("email_id")
     private String emailId;
 
@@ -36,13 +45,16 @@ public class CreateBookingRequest implements Serializable {
     public CreateBookingRequest() {
     }
 
-    public CreateBookingRequest(List<String> flightIds, String date, String emailId, String phoneNo, String name, Integer noOfPeople) {
+    public CreateBookingRequest(List<String> flightIds, String date, String source, String destination, String emailId, String phoneNo, String name, Integer noOfPeople, Integer price) {
         this.flightIds = flightIds;
         this.date = date;
+        this.source = source;
+        this.destination = destination;
         this.emailId = emailId;
         this.phoneNo = phoneNo;
         this.name = name;
         this.noOfPeople = noOfPeople;
+        this.price = price;
     }
 
     public List<String> getFlightIds() {
@@ -91,6 +103,30 @@ public class CreateBookingRequest implements Serializable {
 
     public void setNoOfPeople(Integer noOfPeople) {
         this.noOfPeople = noOfPeople;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     @Override
