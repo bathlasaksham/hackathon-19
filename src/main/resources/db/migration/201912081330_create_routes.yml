@@ -52,3 +52,6 @@ databaseChangeLog:
         - column:
             name: days
             type: varchar
+        - column:
+            name: base_price
+            type: int

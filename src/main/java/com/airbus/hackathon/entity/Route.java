@@ -20,16 +20,19 @@ public class Route extends AbstractEntity<Integer> implements Serializable {
 
     private String days;
 
+    private Integer basePrice;
+
     public Route() {
     }
 
-    public Route(String flightId, String source, String destination, String startTime, String endTime, String days) {
+    public Route(String flightId, String source, String destination, String startTime, String endTime, String days, Integer basePrice) {
         this.flightId = flightId;
         this.source = source;
         this.destination = destination;
         this.startTime = startTime;
         this.endTime = endTime;
         this.days = days;
+        this.basePrice = basePrice;
     }
 
     public String getFlightId() {
@@ -80,6 +83,14 @@ public class Route extends AbstractEntity<Integer> implements Serializable {
         this.days = days;
     }
 
+    public Integer getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(Integer basePrice) {
+        this.basePrice = basePrice;
+    }
+
     @Override
     public String toString() {
         return "Route{" +
@@ -89,6 +100,7 @@ public class Route extends AbstractEntity<Integer> implements Serializable {
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", days='" + days + '\'' +
+                ", basePrice=" + basePrice +
                 '}';
     }
 
