@@ -16,4 +16,7 @@ public interface RouteRepo extends JpaRepository<Route, Integer> {
 
     @Query(value = "select r from routes r where date = ?1 and source = ?2 and destination = ?3", nativeQuery = true)
     List<String> getAllDestinations(String source, String destination);
+
+    Route findByFlightId(String flightId);
+
 }

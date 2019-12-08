@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlightRepo extends JpaRepository<Flight, Integer> {
 
+    Flight findByFlightName(String flightId);
 }

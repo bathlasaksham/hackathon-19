@@ -30,4 +30,9 @@ public class RouteManager extends AbstractManager<Route> {
         List <String> destinations = routeRepo.getAllDestinations(source, destination);
         return l2Routes;
     }
+
+    public Route findByFlightId(String flightId) {
+        return routeRepo.findByFlightId(flightId);
+    }
+
 }
