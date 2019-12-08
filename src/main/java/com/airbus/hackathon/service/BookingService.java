@@ -1,8 +1,11 @@
 package com.airbus.hackathon.service;
 
+import com.airbus.hackathon.entity.Booking;
 import com.airbus.hackathon.manager.BookingManager;
 import com.airbus.hackathon.pojo.request.CreateBookingRequest;
 import com.airbus.hackathon.pojo.response.CreateBookingResponse;
+import com.airbus.hackathon.util.DateUtil;
+import com.airbus.hackathon.util.TransformUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +41,10 @@ public class BookingService {
             createBookingResponse.setErrors(errors);
             return createBookingResponse;
         }
-
+        Booking booking = new Booking(DateUtil.toDate(createBookingRequest.getDate()), TransformUtil.toJson(createBookingRequest.getFlightIds()), createBookingRequest.getSource(),
+                createBookingRequest.getDestination(), createBookingRequest.getPrice(), createBookingRequest.getPhoneNo(),
+                createBookingRequest.getNoOfPeople(), Booking.Status.CONFIRM);
+        bookingManager.create(booking);
         createBookingResponse.setErrors(errors);
         return createBookingResponse;
     }

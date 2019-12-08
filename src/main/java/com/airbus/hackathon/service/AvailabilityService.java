@@ -1,5 +1,6 @@
 package com.airbus.hackathon.service;
 
+import com.airbus.hackathon.entity.Booking;
 import com.airbus.hackathon.entity.Flight;
 import com.airbus.hackathon.entity.Route;
 import com.airbus.hackathon.manager.BookingManager;
@@ -31,6 +32,7 @@ public class AvailabilityService {
 
     public Map<String, Integer> getAvailability(List<String> flightIds, String date) {
         Map<String, Integer> flightIdWiseAvailability = new HashMap<>();
+        List<Booking> bookings = bookingManager.getBookedSeatsForFlightIdAndDate(date);
         for (String flightId: flightIds) {
             Route route = routeManager.findByFlightId(flightId);
             if (route == null) {
@@ -50,7 +52,14 @@ public class AvailabilityService {
                 continue;
             }
             Integer totalCapacity = flight.getCapacity();
-            Integer bookedSeats = bookingManager.getBookedSeatsForFlightIdAndDate(flightId, date);
+            Integer bookedSeats = 0;
+            for (Booking booking: bookings) {
+                List<Integer> flightIdsForBooking = (List<Integer>) TransformUtil.fromJson(booking.getFlightIds(), new TypeReference<List<Integer>>() {
+                });
+                if (flightIdsForBooking.contains(flightId)) {
+                    bookedSeats += booking.getPersons();
+                }
+            }
             flightIdWiseAvailability.put(flightId, totalCapacity - bookedSeats);
         }
         return flightIdWiseAvailability;
