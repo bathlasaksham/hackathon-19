@@ -1,0 +1,39 @@
+databaseChangeLog:
+- changeSet:
+    id: createTable-coupons
+    author: saksham
+    changes:
+    - createTable:
+        schemaName: public
+        tableName: coupons
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+                primaryKey: true
+                nullable: false
+        - column:
+            name: created_at
+            type: timestamp
+            constraints:
+                nullable: false
+        - column:
+            name: updated_at
+            type: timestamp
+            constraints:
+                nullable: false
+        - column:
+            name: coupon_id
+            type: varchar
+            constraints:
+                nullable: false
+        - column:
+            name: discount
+            type: int
+            constraints:
+                nullable: false
+        - column:
+            name: max_discount
+            type: int

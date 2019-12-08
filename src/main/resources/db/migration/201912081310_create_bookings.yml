@@ -1,0 +1,66 @@
+databaseChangeLog:
+- changeSet:
+    id: createTable-bookings
+    author: saksham
+    changes:
+    - createTable:
+        schemaName: public
+        tableName: bookings
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+                primaryKey: true
+                nullable: false
+        - column:
+            name: created_at
+            type: timestamp
+            constraints:
+                nullable: false
+        - column:
+            name: updated_at
+            type: timestamp
+            constraints:
+                nullable: false
+        - column:
+            name: date
+            type: date
+            constraints:
+              nullable: false
+        - column:
+            name: flight_ids
+            type: varchar
+            constraints:
+              nullable: false
+        - column:
+            name: source
+            type: varchar
+            constraints:
+              nullable: false
+        - column:
+            name: destination
+            type: varchar
+            constraints:
+              nullable: false
+        - column:
+            name: amount
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: email
+            type: varchar
+            constraints:
+              nullable: false
+        - column:
+            name: phone
+            type: varchar
+            constraints:
+              nullable: false
+        - column:
+            name: persons
+            type: int
+            constraints:
+              nullable: false
