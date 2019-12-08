@@ -21,6 +21,12 @@ public class FlightDetails implements Serializable {
     @JsonProperty("end_time")
     private String endTime;
 
+    @JsonProperty("source")
+    private String source;
+
+    @JsonProperty("destination")
+    private String destination;
+
     public FlightDetails() {
     }
 
@@ -52,6 +58,22 @@ public class FlightDetails implements Serializable {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     @Override

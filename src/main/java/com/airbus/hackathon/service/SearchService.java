@@ -78,6 +78,8 @@ public class SearchService {
             flightDetails.setEndTime(route.getEndTime());
             flightDetails.setStartTime(route.getStartTime());
             flightDetails.setFlightId(route.getFlightId());
+            flightDetails.setSource(route.getSource());
+            flightDetails.setDestination(route.getDestination());
             flightsInfo.setDuration(getTimeString(Integer.valueOf(route.getEndTime()) - Integer.valueOf(route.getStartTime())));
             List<FlightDetails> flightDetailsList = new ArrayList<>();
             flightDetailsList.add(flightDetails);
@@ -100,13 +102,17 @@ public class SearchService {
             FlightDetails flightDetails2 = new FlightDetails();
             flightDetails.setEndTime(routeList.get(0).getEndTime());
             flightDetails.setStartTime(routeList.get(0).getStartTime());
+            flightDetails.setSource(routeList.get(0).getSource());
+            flightDetails.setDestination(routeList.get(0).getDestination());
             flightDetails.setFlightId(routeList.get(0).getFlightId());
             flightDetails2.setEndTime(routeList.get(1).getEndTime());
             flightDetails2.setStartTime(routeList.get(1).getStartTime());
             flightDetails2.setFlightId(routeList.get(1).getFlightId());
+            flightDetails2.setSource(routeList.get(1).getSource());
+            flightDetails2.setDestination(routeList.get(1).getDestination());
             List<FlightDetails> flightDetailsList = new ArrayList<>();
-            flightDetailsList.add(flightDetails2);
             flightDetailsList.add(flightDetails);
+            flightDetailsList.add(flightDetails2);
             flightsInfo.setFlightDetails(flightDetailsList);
             flightsInfo.setStop(routeList.get(1).getSource());
             flightsInfoList.add(flightsInfo);
