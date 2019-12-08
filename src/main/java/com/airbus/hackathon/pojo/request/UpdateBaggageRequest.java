@@ -18,6 +18,9 @@ public class UpdateBaggageRequest implements Serializable {
     @JsonProperty("booking_id")
     private Integer bookingId;
 
+    @JsonProperty("flight_id")
+    private String flightId;
+
     @JsonProperty("status")
     private String status;
 
@@ -28,13 +31,6 @@ public class UpdateBaggageRequest implements Serializable {
     private Integer noOfItems;
 
     public UpdateBaggageRequest() {
-    }
-
-    public UpdateBaggageRequest(Integer bookingId, String status, Float weight, Integer noOfItems) {
-        this.bookingId = bookingId;
-        this.status = status;
-        this.weight = weight;
-        this.noOfItems = noOfItems;
     }
 
     public Integer getBookingId() {
@@ -69,9 +65,17 @@ public class UpdateBaggageRequest implements Serializable {
         this.noOfItems = noOfItems;
     }
 
+    public String getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
     @JsonIgnore
     public boolean isValid() {
-        return (bookingId != null && !StringUtils.isEmpty(status) && weight != null && noOfItems != null);
+        return (bookingId != null && flightId != null && !StringUtils.isEmpty(status) && weight != null && noOfItems != null);
     }
 
     @Override
@@ -81,6 +85,7 @@ public class UpdateBaggageRequest implements Serializable {
                 ", status=" + status +
                 ", weight=" + weight +
                 ", noOfItems=" + noOfItems +
+                ", flightId=" + flightId +
                 '}';
     }
 

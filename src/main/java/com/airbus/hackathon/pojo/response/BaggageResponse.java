@@ -16,6 +16,9 @@ public class BaggageResponse implements Serializable {
     @JsonProperty("booking_id")
     private Integer bookingId;
 
+    @JsonProperty("flight_name")
+    private String flightName;
+
     @JsonProperty("status")
     private String status;
 
@@ -44,6 +47,14 @@ public class BaggageResponse implements Serializable {
 
     public void setBookingId(Integer bookingId) {
         this.bookingId = bookingId;
+    }
+
+    public String getFlightName() {
+        return flightName;
+    }
+
+    public void setFlightName(String flightName) {
+        this.flightName = flightName;
     }
 
     public String getStatus() {
@@ -85,6 +96,7 @@ public class BaggageResponse implements Serializable {
                 ", status='" + status + '\'' +
                 ", weight=" + weight +
                 ", noOfItems=" + noOfItems +
+                ", flightName=" + flightName +
                 ", error='" + error + '\'' +
                 '}';
     }

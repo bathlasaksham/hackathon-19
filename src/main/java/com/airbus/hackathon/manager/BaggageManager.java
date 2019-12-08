@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BaggageManager extends AbstractManager {
 
@@ -31,7 +33,7 @@ public class BaggageManager extends AbstractManager {
 
     @Trace
     public boolean createOrUpdateBaggage(UpdateBaggageRequest updateBaggageRequest) throws Exception {
-        Baggage existing = baggageRepo.findByBookingId(updateBaggageRequest.getBookingId());
+        Baggage existing = baggageRepo.findByBookingIdAndFlightId(updateBaggageRequest.getBookingId(), updateBaggageRequest.getFlightId());
         Baggage baggage = new Baggage();
         baggage.setBookingId(updateBaggageRequest.getBookingId());
         baggage.setNoOfItems(updateBaggageRequest.getNoOfItems());
@@ -40,13 +42,14 @@ public class BaggageManager extends AbstractManager {
         }
         baggage.setStatus(getStatusByName(updateBaggageRequest.getStatus()));
         baggage.setWeight(updateBaggageRequest.getWeight());
+        baggage.setFlightId(updateBaggageRequest.getFlightId());
         try {
             if (existing == null) {
                 try {
                     baggageRepo.save(baggage);
                     return true;
                 } catch (org.hibernate.exception.ConstraintViolationException | org.springframework.dao.DataIntegrityViolationException | org.hibernate.exception.GenericJDBCException | org.hibernate.exception.DataException e) {
-                    existing = baggageRepo.findByBookingId(baggage.getBookingId());
+                    existing = baggageRepo.findByBookingIdAndFlightId(baggage.getBookingId(), baggage.getFlightId());
                     if (existing == null) {
                         baggageRepo.save(baggage);
                         return true;
@@ -73,10 +76,15 @@ public class BaggageManager extends AbstractManager {
         existing.setWeight(newBaggage.getWeight());
         existing.setNoOfItems(newBaggage.getNoOfItems());
         existing.setStatus(newBaggage.getStatus());
+        existing.setFlightId(newBaggage.getFlightId());
     }
 
-    public Baggage findByBookingId(Integer bookingId) {
+    public List<Baggage> findByBookingId(Integer bookingId) {
        return baggageRepo.findByBookingId(bookingId);
+    }
+
+    public Baggage findByBookingIdAndFlightId(Integer bookingId, String flightId) {
+        return baggageRepo.findByBookingIdAndFlightId(bookingId, flightId);
     }
 
 }

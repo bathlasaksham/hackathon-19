@@ -16,6 +16,8 @@ public class Baggage extends AbstractEntity<Integer> implements Serializable {
 
     private Status status;
 
+    private String flightId;
+
     public enum Status {
 
         NOT_CHECKED_IN("Not Checked In"), CHECKED_IN("Checked In"), IN_TRANSIT("In Transit"), X_RAY("X Ray"),
@@ -80,6 +82,14 @@ public class Baggage extends AbstractEntity<Integer> implements Serializable {
         this.status = status;
     }
 
+    public String getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
+    }
+
     @Override
     public String toString() {
         return "Baggage{" +
@@ -87,6 +97,7 @@ public class Baggage extends AbstractEntity<Integer> implements Serializable {
                 ", weight=" + weight +
                 ", noOfItems=" + noOfItems +
                 ", status=" + status +
+                ", flightId=" + flightId +
                 '}';
     }
 
