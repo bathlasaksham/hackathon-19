@@ -30,6 +30,9 @@ public class BaggageController {
         if (updateBaggageRequest.isValid()) {
             try {
                 flag = baggageManager.createOrUpdateBaggage(updateBaggageRequest);
+                if (flag == true) {
+                    success = "true";
+                }
             } catch (Exception e) {
                 return success;
             }
