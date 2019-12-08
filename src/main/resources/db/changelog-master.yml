@@ -1,9 +1,16 @@
 databaseChangeLog:
-# includeAll is broken currently
-#- includeAll:
-#    path: migration/
-#    errorIfMissingOrEmpty: true
-#    relativeToChangelogFile: true
 - include:
-    file: migration/201903271500_create_hotels.yml
+    file: migration/201903271500_create_locations.yml
+    relativeToChangelogFile: true
+- include:
+    file: migration/201903271500_create_coupons.yml
+    relativeToChangelogFile: true
+- include:
+    file: migration/201903271500_create_bookings.yml
+    relativeToChangelogFile: true
+- include:
+    file: migration/201903271500_create_flights.yml
+    relativeToChangelogFile: true
+- include:
+    file: migration/201903271500_create_routes.yml
     relativeToChangelogFile: true
