@@ -108,6 +108,7 @@ public class SearchService {
             flightDetailsList.add(flightDetails2);
             flightDetailsList.add(flightDetails);
             flightsInfo.setFlightDetails(flightDetailsList);
+            flightsInfo.setStop(routeList.get(1).getSource());
             flightsInfoList.add(flightsInfo);
         }
         return flightsInfoList;
