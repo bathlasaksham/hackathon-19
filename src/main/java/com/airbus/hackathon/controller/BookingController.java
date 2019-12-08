@@ -21,11 +21,7 @@ public class BookingController {
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public CreateBookingResponse createBooking(@RequestBody CreateBookingRequest createBookingRequest) throws Exception {
         CreateBookingResponse createBookingResponse = new CreateBookingResponse();
-        if (createBookingRequest != null && createBookingRequest.isValid()) {
-            createBookingResponse = bookingService.createBooking(createBookingRequest);
-        } else {
-            throw new BadRequestException("Required params missing");
-        }
+        createBookingResponse = bookingService.createBooking(createBookingRequest);
         return createBookingResponse;
     }
 
