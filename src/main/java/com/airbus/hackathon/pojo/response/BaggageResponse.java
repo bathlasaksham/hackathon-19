@@ -16,6 +16,9 @@ public class BaggageResponse implements Serializable {
     @JsonProperty("booking_id")
     private Integer bookingId;
 
+    @JsonProperty("created_at")
+    private String createdAt;
+
     @JsonProperty("flight_name")
     private String flightName;
 
@@ -28,25 +31,29 @@ public class BaggageResponse implements Serializable {
     @JsonProperty("no_of_items")
     private Integer noOfItems;
 
+    @JsonProperty("progress")
+    private Integer progress;
+
     @JsonProperty("error")
     private String error;
 
     public BaggageResponse() {
     }
 
-    public BaggageResponse(Integer bookingId, String status, Float weight, Integer noOfItems, String error) {
-        this.bookingId = bookingId;
-        this.status = status;
-        this.weight = weight;
-        this.noOfItems = noOfItems;
-        this.error = error;
-    }
     public Integer getBookingId() {
         return bookingId;
     }
 
     public void setBookingId(Integer bookingId) {
         this.bookingId = bookingId;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getFlightName() {
@@ -89,6 +96,14 @@ public class BaggageResponse implements Serializable {
         this.error = error;
     }
 
+    public Integer getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Integer progress) {
+        this.progress = progress;
+    }
+
     @Override
     public String toString() {
         return "BaggageResponse{" +
@@ -97,6 +112,7 @@ public class BaggageResponse implements Serializable {
                 ", weight=" + weight +
                 ", noOfItems=" + noOfItems +
                 ", flightName=" + flightName +
+                ", createdAt=" + createdAt +
                 ", error='" + error + '\'' +
                 '}';
     }

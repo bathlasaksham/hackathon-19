@@ -54,6 +54,22 @@ public class BaggageController {
                     baggageResponse.setWeight(baggage.getWeight());
                     baggageResponse.setStatus(baggage.getStatus().getName());
                     baggageResponse.setFlightName(baggage.getFlightId());
+                    baggageResponse.setCreatedAt(baggage.getUpdatedAt().toString());
+                    if (baggage.getStatus().getName().equals("Not Checked In")) {
+                        baggageResponse.setProgress(10);
+                    }
+                    if (baggage.getStatus().getName().equals("Checked In")) {
+                        baggageResponse.setProgress(30);
+                    }
+                    if (baggage.getStatus().getName().equals("In Transit")) {
+                        baggageResponse.setProgress(50);
+                    }
+                    if (baggage.getStatus().getName().equals("X Ray")) {
+                        baggageResponse.setProgress(70);
+                    }
+                    if (baggage.getStatus().getName().equals("Cargo Loading")) {
+                        baggageResponse.setProgress(100);
+                    }
                 } else {
                     baggageResponse.setError("No Baggage Found For Booking Id : " + getBaggageRequest.getBookingId().toString());
                 }
