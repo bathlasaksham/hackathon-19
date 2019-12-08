@@ -1,5 +1,6 @@
 package com.airbus.hackathon.controller;
 
+import com.airbus.hackathon.entity.Baggage;
 import com.airbus.hackathon.manager.BaggageManager;
 import com.airbus.hackathon.pojo.request.GetBaggageRequest;
 import com.airbus.hackathon.pojo.request.UpdateBaggageRequest;
@@ -33,13 +34,22 @@ public class BaggageController {
     }
 
     @RequestMapping(value = "getDetails", method = RequestMethod.POST)
-    public  createBooking(@RequestBody GetBaggageRequest getBaggageRequest) {
+    public BaggageResponse createBooking(@RequestBody GetBaggageRequest getBaggageRequest) {
         BaggageResponse baggageResponse = new BaggageResponse();
         if (getBaggageRequest.isValid()) {
-
+            Baggage baggage = baggageManager.findByBookingId(getBaggageRequest.getBookingId());
+            if (baggage != null) {
+                baggageResponse.setBookingId(baggage.getBookingId());
+                baggageResponse.setNoOfItems(baggage.getNoOfItems());
+                baggageResponse.setWeight(baggage.getWeight());
+                baggageResponse.setStatus(baggage.getStatus().getName());
+            } else {
+                baggageResponse.setError("No Baggage Found For Booking Id : " + getBaggageRequest.getBookingId().toString());
+            }
         } else {
             baggageResponse.setError("Invalid Request");
         }
+        return baggageResponse;
     }
 
 }

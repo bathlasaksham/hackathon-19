@@ -75,8 +75,8 @@ public class BaggageManager extends AbstractManager {
         existing.setStatus(newBaggage.getStatus());
     }
 
-    public Baggage findByBookingId(Baggage baggage) {
-        
+    public Baggage findByBookingId(Integer bookingId) {
+       return baggageRepo.findByBookingId(bookingId);
     }
 
 }
