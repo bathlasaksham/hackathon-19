@@ -17,4 +17,8 @@ public class RouteManager extends AbstractManager {
         return routeRepo;
     }
 
+    public Route findByFlightId(String flightId) {
+        return routeRepo.findByFlightId(flightId);
+    }
+
 }

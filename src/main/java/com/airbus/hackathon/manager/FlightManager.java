@@ -16,4 +16,9 @@ public class FlightManager extends AbstractManager {
     public JpaRepository<Flight, Integer> getRepo() {
         return flightRepo;
     }
+
+
+    public Flight findByFlightName(String flightId) {
+        return flightRepo.findByFlightName(flightId);
+    }
 }

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-
+    Integer getBookedSeatsForFlightIdAndDate(String flightId, String date);
 }

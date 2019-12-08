@@ -16,4 +16,9 @@ public class BookingManager extends AbstractManager {
     public JpaRepository<Booking, Integer> getRepo() {
         return bookingRepository;
     }
+
+    public Integer getBookedSeatsForFlightIdAndDate(String flightId, String date) {
+        return bookingRepository.getBookedSeatsForFlightIdAndDate(flightId, date);
+    }
+
 }

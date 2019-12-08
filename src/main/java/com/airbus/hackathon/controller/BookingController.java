@@ -1,5 +1,6 @@
 package com.airbus.hackathon.controller;
 
+import com.airbus.hackathon.exception.BadRequestException;
 import com.airbus.hackathon.pojo.request.CreateBookingRequest;
 import com.airbus.hackathon.pojo.response.CreateBookingResponse;
 import com.airbus.hackathon.service.BookingService;
@@ -18,9 +19,13 @@ public class BookingController {
     private BookingService bookingService;
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public CreateBookingResponse createBooking(@RequestBody CreateBookingRequest createBookingRequest) {
+    public CreateBookingResponse createBooking(@RequestBody CreateBookingRequest createBookingRequest) throws Exception {
         CreateBookingResponse createBookingResponse = new CreateBookingResponse();
-        createBookingResponse = bookingService.createBooking(createBookingRequest);
+        if (createBookingRequest != null && createBookingRequest.isValid()) {
+            createBookingResponse = bookingService.createBooking(createBookingRequest);
+        } else {
+            throw new BadRequestException("Required params missing");
+        }
         return createBookingResponse;
     }
 
