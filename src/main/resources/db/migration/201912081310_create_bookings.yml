@@ -60,11 +60,6 @@ databaseChangeLog:
             constraints:
               nullable: false
         - column:
-            name: phone
-            type: varchar
-            constraints:
-              nullable: false
-        - column:
             name: persons
             type: int
             constraints:
