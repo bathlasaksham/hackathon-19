@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RouteManager extends AbstractManager {
+public class RouteManager extends AbstractManager<Route> {
 
     @Autowired
     private RouteRepo routeRepo;

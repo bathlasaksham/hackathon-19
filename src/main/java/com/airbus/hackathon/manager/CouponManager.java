@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CouponManager extends AbstractManager {
+public class CouponManager extends AbstractManager<Coupon> {
 
     @Autowired
     private CouponRepo couponRepo;

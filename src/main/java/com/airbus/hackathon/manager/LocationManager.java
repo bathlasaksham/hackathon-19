@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class LocationManager extends AbstractManager {
+public class LocationManager extends AbstractManager<Location> {
 
     @Autowired
     private LocationRepo locationRepo;
@@ -20,7 +20,7 @@ public class LocationManager extends AbstractManager {
     }
 
 
-    public List<String> getLocations() {
+    public List<Location> getLocations() {
         return findAll();
     }
 }
