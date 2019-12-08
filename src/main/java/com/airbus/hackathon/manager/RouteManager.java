@@ -36,8 +36,8 @@ public class RouteManager extends AbstractManager<Route> {
                 for (int j=0; j< sroutes.size(); j++) {
                     for (int k=0; k< eroutes.size(); k++) {
                         List<Route> routeList = new ArrayList<>();
-                        routeList.add(eroutes.get(k));
                         routeList.add(sroutes.get(j));
+                        routeList.add(eroutes.get(k));
                         l2Routes.add(routeList);
                     }
                 }

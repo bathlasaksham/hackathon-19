@@ -32,16 +32,20 @@ public class FlightsInfo implements Serializable {
     @JsonProperty("flight_details")
     private List<FlightDetails> flightDetails;
 
+    @JsonProperty("stop")
+    private String stop;
+
     public FlightsInfo() {
     }
 
-    public FlightsInfo(String flightIds, String startTime, String endTime, String duration, Integer price, List<FlightDetails> flightDetails) {
+    public FlightsInfo(String flightIds, String startTime, String endTime, String duration, Integer price, List<FlightDetails> flightDetails, String stop) {
         this.flightIds = flightIds;
         this.startTime = startTime;
         this.endTime = endTime;
         this.duration = duration;
         this.price = price;
         this.flightDetails = flightDetails;
+        this.stop = stop;
     }
 
     public String getFlightIds() {
@@ -94,6 +98,14 @@ public class FlightsInfo implements Serializable {
 
     public void setFlightDetails(List<FlightDetails> flightDetails) {
         this.flightDetails = flightDetails;
+    }
+
+    public String getStop() {
+        return stop;
+    }
+
+    public void setStop(String stop) {
+        this.stop = stop;
     }
 
     @Override
