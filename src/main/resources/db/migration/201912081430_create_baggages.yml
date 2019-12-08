@@ -1,0 +1,46 @@
+databaseChangeLog:
+- changeSet:
+    id: createTable-baggages
+    author: ashwani
+    changes:
+    - createTable:
+        schemaName: public
+        tableName: baggages
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: created_at
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: updated_at
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: booking_id
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: weight
+            type: float
+            constraints:
+              nullable: false
+        - column:
+            name: no_of_items
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: status
+            type: int
+            constraints:
+              nullable: false
