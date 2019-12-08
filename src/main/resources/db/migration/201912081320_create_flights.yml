@@ -1,0 +1,41 @@
+databaseChangeLog:
+- changeSet:
+    id: createTable-flights
+    author: saksham
+    changes:
+    - createTable:
+        schemaName: public
+        tableName: flights
+          columns:
+          - column:
+              name: id
+              type: int
+              autoIncrement: true
+              constraints:
+                primaryKey: true
+                nullable: false
+          - column:
+              name: created_at
+              type: timestamp
+              constraints:
+                nullable: false
+          - column:
+              name: updated_at
+              type: timestamp
+              constraints:
+                nullable: false
+          - column:
+              name: airline
+              type: varchar
+              constraints:
+                nullable: false
+          - column:
+              name: capacity
+              type: int
+              constraints:
+                nullable: false
+          - column:
+              name: flight_name
+              type: varchar
+              constraints:
+                nullable: false
