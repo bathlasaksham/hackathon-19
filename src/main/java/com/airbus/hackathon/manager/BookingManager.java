@@ -24,4 +24,7 @@ public class BookingManager extends AbstractManager<Booking> {
         return bookingRepository.getBookedSeatsForFlightIdAndDate(DateUtil.toDate(date));
     }
 
+    public List<Booking> findByPhone(String phoneNo) {
+        return bookingRepository.findByPhone(phoneNo);
+    }
 }

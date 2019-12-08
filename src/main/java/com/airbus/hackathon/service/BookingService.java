@@ -3,7 +3,9 @@ package com.airbus.hackathon.service;
 import com.airbus.hackathon.entity.Booking;
 import com.airbus.hackathon.manager.BookingManager;
 import com.airbus.hackathon.pojo.request.CreateBookingRequest;
+import com.airbus.hackathon.pojo.response.BookingDetail;
 import com.airbus.hackathon.pojo.response.CreateBookingResponse;
+import com.airbus.hackathon.pojo.response.GetBookingsResponse;
 import com.airbus.hackathon.util.DateUtil;
 import com.airbus.hackathon.util.TransformUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -47,5 +49,17 @@ public class BookingService {
         bookingManager.create(booking);
         createBookingResponse.setErrors(errors);
         return createBookingResponse;
+    }
+
+    public GetBookingsResponse getBookings(String phoneNo) {
+        List<Booking> bookings = bookingManager.findByPhone(phoneNo);
+        GetBookingsResponse getBookingsResponse = new GetBookingsResponse();
+        List<BookingDetail> bookingDetails = new ArrayList<>();
+        for (Booking booking: bookings) {
+            BookingDetail bookingDetail = new BookingDetail(booking);
+            bookingDetails.add(bookingDetail);
+        }
+        getBookingsResponse.setBookingDetails(bookingDetails);
+        return getBookingsResponse;
     }
 }

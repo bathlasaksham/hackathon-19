@@ -1,71 +1,65 @@
-package com.airbus.hackathon.entity;
+package com.airbus.hackathon.pojo.response;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.airbus.hackathon.entity.Booking;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
-import java.time.LocalDate;
 
-@Entity
-@Table(name = "bookings")
-public class Booking extends AbstractEntity<Integer> implements Serializable {
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class BookingDetail implements Serializable {
 
-    private LocalDate date;
+    @JsonProperty("date")
+    private String date;
 
+    @JsonProperty("flight_ids")
     private String flightIds;
 
+    @JsonProperty("source")
     private String source;
 
+    @JsonProperty("destination")
     private String destination;
 
+    @JsonProperty("amount")
     private Integer amount;
 
-    private String phone;
-
+    @JsonProperty("persons")
     private Integer persons;
 
+    @JsonProperty("status")
     private Booking.Status status;
 
-    public enum Status {
-
-        CONFIRM("Confirm Booking"), CHECKIN("Checked In"), CHECKOUT("Checked Out"), CANCELLED("Cancelled Booking"),
-        NO_SHOW("No Show"), SAVED("Saved");
-
-        private String name;
-
-        Status(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public static final Booking.Status BOOKING_STATUS_ARRAY[];
-
-        static {
-            BOOKING_STATUS_ARRAY = Booking.Status.values();
-        }
+    public BookingDetail() {
     }
 
-    public Booking() {
+    public BookingDetail(Booking booking) {
+        this.date = booking.getDate().toString();
+        this.flightIds = booking.getFlightIds();
+        this.source = booking.getSource();
+        this.destination = booking.getDestination();
+        this.amount = booking.getAmount();
+        this.persons = booking.getPersons();
+        this.status = booking.getStatus();
     }
 
-    public Booking(LocalDate date, String flightIds, String source, String destination, Integer amount, String phone, Integer persons, Status status) {
+    public BookingDetail(String date, String flightIds, String source, String destination, Integer amount, Integer persons, Booking.Status status) {
         this.date = date;
         this.flightIds = flightIds;
         this.source = source;
         this.destination = destination;
         this.amount = amount;
-        this.phone = phone;
         this.persons = persons;
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -101,14 +95,6 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
         this.amount = amount;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public Integer getPersons() {
         return persons;
     }
@@ -117,24 +103,24 @@ public class Booking extends AbstractEntity<Integer> implements Serializable {
         this.persons = persons;
     }
 
-    public Status getStatus() {
+    public Booking.Status getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Booking.Status status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "date=" + date +
+        return "BookingDetail{" +
+                "date='" + date + '\'' +
                 ", flightIds='" + flightIds + '\'' +
                 ", source='" + source + '\'' +
                 ", destination='" + destination + '\'' +
                 ", amount=" + amount +
-                ", phone='" + phone + '\'' +
                 ", persons=" + persons +
+                ", status=" + status +
                 '}';
     }
 
